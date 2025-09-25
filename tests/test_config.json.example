@@ -1,0 +1,119 @@
+{
+  "environments": {
+    "local": {
+      "API_IP": "10.0.69.15",
+      "API_TOKEN": "your-access-token",
+      "PORT_OFFSET": "false",
+      "DISABLE_SSL_VERIFY": "true"
+    },
+    "local_physical": {
+      "API_IP": "10.0.69.15",
+      "API_TOKEN": "your-access-token",
+      "PORT_OFFSET": "true",
+      "DISABLE_SSL_VERIFY": "true"
+    },
+    "local_port_control": {
+      "API_IP": "10.0.69.15",
+      "API_TOKEN": "your-access-token",
+      "PORT_OFFSET": "false",
+      "DISABLE_SSL_VERIFY": "true"
+    },
+    "local_port_control_physical": {
+      "API_IP": "10.0.69.15",
+      "API_TOKEN": "your-access-token",
+      "PORT_OFFSET": "true",
+      "DISABLE_SSL_VERIFY": "true"
+    },
+    "staging": {
+      "API_IP": "192.168.1.100",
+      "API_TOKEN": "your-staging-token",
+      "PORT_OFFSET": "false",
+      "DISABLE_SSL_VERIFY": "false"
+    },
+    "production": {
+      "API_IP": "192.168.1.100",
+      "API_TOKEN": "your-production-token",
+      "PORT_OFFSET": "false",
+      "DISABLE_SSL_VERIFY": "false"
+    },
+    "mock": {
+      "API_IP": "localhost:8080",
+      "API_TOKEN": "mock-token",
+      "PORT_OFFSET": "false",
+      "DISABLE_SSL_VERIFY": "true"
+    },
+    "mock_physical": {
+      "API_IP": "localhost:8080",
+      "API_TOKEN": "mock-token",
+      "PORT_OFFSET": "true",
+      "DISABLE_SSL_VERIFY": "true"
+    },
+    "mock_port_control": {
+      "API_IP": "localhost:8080",
+      "API_TOKEN": "mock-token",
+      "PORT_OFFSET": "false",
+      "DISABLE_SSL_VERIFY": "true"
+    },
+    "mock_port_control_physical": {
+      "API_IP": "localhost:8080",
+      "API_TOKEN": "mock-token",
+      "PORT_OFFSET": "true",
+      "DISABLE_SSL_VERIFY": "true"
+    }
+  },
+  "test_scenarios": {
+    "basic_request": {
+      "description": "Basic API request test",
+      "event": {
+        "httpMethod": "GET",
+        "path": "/port-status",
+        "headers": {},
+        "queryStringParameters": null,
+        "body": null
+      }
+    },
+    "api_gateway_request": {
+      "description": "Simulated API Gateway request",
+      "event": {
+        "httpMethod": "GET",
+        "path": "/port-status",
+        "headers": {
+          "Accept": "application/json",
+          "User-Agent": "Amazon CloudFront"
+        },
+        "multiValueHeaders": {},
+        "queryStringParameters": null,
+        "multiValueQueryStringParameters": null,
+        "pathParameters": null,
+        "stageVariables": null,
+        "requestContext": {
+          "resourceId": "abc123",
+          "resourcePath": "/port-status",
+          "httpMethod": "GET",
+          "requestId": "test-request-id",
+          "protocol": "HTTP/1.1",
+          "stage": "test",
+          "requestTimeEpoch": 1632150000000,
+          "identity": {
+            "sourceIp": "127.0.0.1"
+          }
+        },
+        "body": null,
+        "isBase64Encoded": false
+      }
+    },
+    "scheduled_event": {
+      "description": "CloudWatch Events scheduled trigger",
+      "event": {
+        "id": "cdc73f9d-aea9-11e3-9d5a-835b769c0d9c",
+        "detail-type": "Scheduled Event",
+        "source": "aws.events",
+        "account": "123456789012",
+        "time": "1970-01-01T00:00:00Z",
+        "region": "us-east-1",
+        "detail": {},
+        "resources": ["arn:aws:events:us-east-1:123456789012:rule/ExampleRule"]
+      }
+    }
+  }
+}
